@@ -1,23 +1,91 @@
 # Sales-Insight-Analysis-in-Power-BI
 
-Project description
+## Project Description
 
-The project shows the sales insights of an online store which sells many products each year. To track the live Sales, Top Selling Products and Customers. I generated a POWER BI based report along with the dashboard to check what sales have patterns throughout 2017-2020.
+This project showcases the **Sales Insights** of an online store that sells a variety of products each year. The goal is to track live **Sales**, **Top Selling Products**, and **Customers**.
 
-The report helps to see:
+I generated a **Power BI** based report along with an interactive dashboard to analyze sales patterns throughout **2017–2020**.
 
-1- Revenue per year 2- Revenue per month 3- Revenue per customer 4- Revenue per region 5- Top 5 customers 6- Top 5 sales Quantities 7- Sales by customer 8- Sales by city 9- Sales by year 10- Sales by month 11- Overall sales/Revenue
+## The Report Helps to See:
 
-Tools that we used:
+1. Revenue per year
+2. Revenue per month
+3. Revenue per customer
+4. Revenue per region
+5. Top 5 customers
+6. Top 5 sales quantities
+7. Sales by customer
+8. Sales by city
+9. Sales by year
+10. Sales by month
+11. Overall sales / Revenue
 
-1- Microsoft Power BI Desktop 2- MYSQL Workbench 
+## Tools Used
 
-Skills needed to complete the job:
+1. **Microsoft Power BI Desktop**
+2. **MySQL Workbench**
 
-1- Data Cleansing 2- DAX language 3- Analytical Skills 4- SQL Query Language 5- Business Intelligence Knowledge
+## Skills Needed to Complete the Job
 
-Here are some of the querys that helped me to verify my Report and Dashboard results
+1. Data Cleansing
+2. DAX Language
+3. Analytical Skills
+4. SQL Query Language
+5. Business Intelligence Knowledge
 
-1- The query will tell you sum of total sales amount throughout all years. SELECT sum(transactions.sales_amount) from date inner join transactions on date.date = transactions.order_date where date.year = '2020' and transactions.currency = 'INR\r' or transactions.currency = 'USD\r'
+## SQL Verification Queries
 
-2-This can be used for to check the total sales in a specific region like I checked in Chennai select sum(sales.transactions.sales_amount) from sales.markets inner join sales.transactions on sales.markets.markets_code = sales.transactions.market_code where sales.markets.markets_name = "Chennai"
+Here are some of the queries that helped me verify my Report and Dashboard results.
+
+### 1. Total Sales Amount (All Years)
+
+The query will tell you the sum of total sales amount throughout all years.
+
+```sql
+SELECT SUM(transactions.sales_amount)
+FROM date
+INNER JOIN transactions
+    ON date.date = transactions.order_date
+WHERE date.year = '2020'
+    AND (transactions.currency = 'INR\r' OR transactions.currency = 'USD\r');
+```
+
+### 2. Total Sales in a Specific Region (e.g., Chennai)
+
+This can be used to check the total sales in a specific region, like I checked in **Chennai**.
+
+```sql
+SELECT SUM(sales.transactions.sales_amount)
+FROM sales.markets
+INNER JOIN sales.transactions
+    ON sales.markets.markets_code = sales.transactions.market_code
+WHERE sales.markets.markets_name = 'Chennai';
+```
+
+## Data Model
+
+The project uses a **star-like schema** consisting of the following tables:
+
+- **`transactions`** – Fact table containing `sales_amount`, `order_date`, `market_code`, `customer_code`, `product_code`, and `currency`.
+- **`date`** – Dimension table containing `date`, `year`, `month`.
+- **`markets`** – Dimension table containing `markets_code`, `markets_name`, `zone`.
+- **`customers`** – Dimension table containing `customer_code`, `customer_name`.
+- **`products`** – Dimension table containing `product_code`, `product_type`.
+
+Relationships are established between the fact table (`transactions`) and the dimension tables using their respective codes, enabling seamless filtering and aggregation in Power BI.
+
+## How to Use
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/wardaverse/Sales-Insight-Analysis-in-Power-BI.git
+   ```
+2. **Set up MySQL:** Import the provided SQL dump into MySQL Workbench.
+3. **Open Power BI:** Load the `.pbix` file and refresh the data source to connect to your local MySQL instance.
+4. **Explore the Dashboard:** Use the interactive slicers and visuals to analyze sales trends.
+
+## Acknowledgements
+
+- **Microsoft Power BI** for the visualization platform.
+- **MySQL** for the data storage and querying.
+- Inspired by real-world business intelligence reporting practices.
