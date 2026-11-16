@@ -2,7 +2,7 @@
 
 Project description
 
-The project shows the sales insights of the ATLIQ HARDWARE in INDIA which sells many products each year. To track the live Sales, Top Selling Products and Customers.I generated a POWER BI based report along with the dashboard to check what sales have patterns throughout 2017-2020.
+The project shows the sales insights of an online store which sells many products each year. To track the live Sales, Top Selling Products and Customers. I generated a POWER BI based report along with the dashboard to check what sales have patterns throughout 2017-2020.
 
 The report helps to see:
 
